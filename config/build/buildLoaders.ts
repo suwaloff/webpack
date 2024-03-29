@@ -32,7 +32,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     },
   };
   const sassLoader = {
-    test: /\.s[ac]ss$/i,
+    test: /\.(scss|css)$/,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssLoaderWithModules,
@@ -44,5 +44,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     use: 'ts-loader',
     exclude: /node_modules/,
   };
-  return [assetLoader, svgrLoader, sassLoader, tsLoader];
+  return [tsLoader, sassLoader, svgrLoader, assetLoader];
 }
