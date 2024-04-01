@@ -27,12 +27,13 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     loader: 'css-loader',
     options: {
       modules: {
+        auto: true,
         localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
       },
     },
   };
   const sassLoader = {
-    test: /\.(scss|css)$/,
+    test: /\.s?[ac]ss$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssLoaderWithModules,
